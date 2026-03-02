@@ -1,0 +1,31 @@
+Bandit Level 15 → 16 Write-Up
+
+Level Goal
+
+Retrieve the password for the next level by submitting the current level password to **port 30001 on localhost** using **SSL/TLS encryption**.
+
+Understanding the Challenge
+
+This level introduces encrypted network communication.
+
+Key points:
+- A service is listening on `localhost`
+- Port: `30001`
+- It requires **SSL/TLS**
+- It validates the password of `bandit15`
+- If correct → returns the password for `bandit16`
+
+Normal tools like `nc` (netcat) will not work because the service expects a **TLS handshake**.
+
+Step 1 – Connect via SSH
+
+First, log in to the server:
+
+```bash
+ssh bandit15@bandit.labs.overthewire.org -p 2220
+
+And put it the last password.
+
+
+
+Since the service requires SSL/TLS, we use:
